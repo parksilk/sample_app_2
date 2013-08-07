@@ -11,7 +11,7 @@ describe "Static pages" do
     
     it { should have_selector('h1', text: "Sample App") }
     it { should have_selector('title', text: full_title('')) }
-    it { should_not have_selector 'title', text: '| Home' }
+    it { should_not have_selector('title', text: '| Home') }
   end
 
   describe "Help page" do
@@ -37,6 +37,8 @@ describe "Static pages" do
 
   it "should have the right links on the layout" do
     visit root_path
+    click_link "Sign in"
+    page.should have_selector('title', text: full_title('Sign in'))
     click_link "About"
     page.should have_selector('title', text: full_title('About Us'))
     click_link "Help"
