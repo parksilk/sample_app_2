@@ -30,9 +30,12 @@ describe "Authentication" do
     describe "with valid information" do
       let(:user) { FactoryGirl.create(:user) }
       before do
-        fill_in("Email",    with: user.email)
-        fill_in("Password", with: user.password)
-        click_button "Sign in"
+        # The following method is defined in utilities.rb, and replaces the
+        # commented-out code below it
+        valid_signin(user)
+        # fill_in("Email",    with: user.email)
+        # fill_in("Password", with: user.password)
+        # click_button "Sign in"
       end
 
       it { should have_selector('title',   text: user.name) }
