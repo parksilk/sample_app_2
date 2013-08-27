@@ -1,11 +1,18 @@
 <% provide(:title, 'All users') %>
 <h1>All users</h1>
 
+<%= will_paginate %>
+
+
 <ul class="users">
-  <% User.all.each do |user| %>
-    <li>
-      <%= gravatar_for(user, size: 52) %>
-      <%= link_to(user.name, user) %>
-    </li>
-  <% end %>
+  <%= render @users %>
 </ul>
+<!-- Below is the un-refactored code that was replace by the above code -->
+<!-- <ul class="users">
+  <#% @users.each do |user| %>
+    <#%= render('user', :user => user) %>
+  <#% end %>
+</ul>
+ -->
+
+<%= will_paginate %>
