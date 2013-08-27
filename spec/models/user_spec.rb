@@ -41,7 +41,7 @@ describe User do
     it "shold not allow access to admin" do
       expect do
         User.new(:admin => "1")
-      end.should raise_error(ActiveModel::MassAssignmentSecurity::Error)
+      end.to raise_error(ActiveModel::MassAssignmentSecurity::Error)
     end
   end
 
