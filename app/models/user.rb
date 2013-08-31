@@ -12,6 +12,8 @@
 #  admin           :boolean          default(FALSE)
 #
 
+# The above is automatically added by running 'bundle exec annotate'
+
 class User < ActiveRecord::Base
   attr_accessible :name, :email, :password, :password_confirmation
   has_secure_password
@@ -28,6 +30,11 @@ class User < ActiveRecord::Base
                       uniqueness: { case_sensitive: false } }
   validates :password, length: { minimum: 6 }
   validates :password_confirmation, presence: true
+
+  def feed
+    # This is only a proto-feed.
+    Micropost.where("user_id = ?", self.id)
+  end
 
   private
 
