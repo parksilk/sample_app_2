@@ -183,7 +183,11 @@ input, textarea, select, .uneditable-input {
   width: 100%;
   height: auto;
   margin-bottom: 15px;
-  @include box_sizing;  
+  // @include box_sizing;  
+}
+
+textarea {
+  @include box_sizing;
 }
 
 #error_explanation {
